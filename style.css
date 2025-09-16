@@ -15,6 +15,7 @@ body{
 
 .hero-content {
     display: flex;
+  flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   z-index: 2;
@@ -41,6 +42,7 @@ body{
 .hero-content-right {
     text-align: center;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     flex-direction: column;
 
@@ -213,6 +215,7 @@ color: red;
 .features{
      row-gap: 50px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
@@ -224,6 +227,7 @@ color: red;
     width: 80%;
     gap: 50px;
     display: flex;
+    flex-wrap: wrap;
     float: right;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -236,6 +240,7 @@ color: red;
 .rituals{
      row-gap: 50px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
@@ -246,7 +251,7 @@ color: red;
 .highlight{
      row-gap: 50px;
     display: flex;
-    
+      flex-wrap: wrap;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
