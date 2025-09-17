@@ -100,25 +100,25 @@
     </div>
 
     <!-- WhatsApp Popup -->
-<!-- WhatsApp Popup -->
-<!-- Order Form Popup -->
+<!-- WhatsApp Popup (Order Form) -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <span id="closePopup" class="close">&times;</span>
     <h2>Order Form</h2>
-    
     <form id="orderForm">
-      <input type="text" id="name" placeholder="Name" required style="margin-bottom: 10px; width: 100%; padding: 10px;" />
-      <input type="email" id="email" placeholder="Email" required style="margin-bottom: 10px; width: 100%; padding: 10px;" />
-      <input type="tel" id="phone" placeholder="Phone Number" required style="margin-bottom: 10px; width: 100%; padding: 10px;" />
-      <textarea id="address" placeholder="Full Address" required style="margin-bottom: 10px; width: 100%; padding: 10px;"></textarea>
+      <input type="text" id="name" placeholder="Your Name" required><br><br>
+      <input type="email" id="email" placeholder="Your Email" required><br><br>
+      <input type="tel" id="phone" placeholder="Your Phone Number" required><br><br>
+      <textarea id="address" placeholder="Your Address" required></textarea><br><br>
       
-      <button type="submit" id="submitOrder" style="background-color: #25D366; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer;">
-        Submit & Pay Now
-      </button>
+      <label>Upload Payment Screenshot (optional):</label><br>
+      <input type="file" id="screenshot" accept="image/*"><br><br>
+
+      <button type="submit" id="submitBtn" style="background-color: #25D366; color: white; padding: 10px 16px; border: none; border-radius: 5px;">Submit & Send to WhatsApp</button>
     </form>
   </div>
 </div>
+
 
 
 
