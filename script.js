@@ -1,70 +1,68 @@
-window.onload = function () {
-  const openPopupBtns = document.querySelectorAll(".openPopup");
-  const orderPopup = document.getElementById("popup");
-  const paymentPopup = document.getElementById("paymentPopup");
-  const thankYouPopup = document.getElementById("thankYouPopup");
+const orderPopup = document.getElementById("popup");
+const paymentPopup = document.getElementById("paymentPopup");
+const thankYouPopup = document.getElementById("thankYouPopup");
+const orderForm = document.getElementById("orderForm");
+const submitBtn = document.getElementById("submitBtn");
+const paymentDoneBtn = document.getElementById("paymentDoneBtn");
 
-  const closePopup = document.getElementById("closePopup");
-  const closePaymentPopup = document.getElementById("closePaymentPopup");
-  const closeThankYouPopup = document.getElementById("closeThankYouPopup");
-
-  const paymentDoneBtn = document.getElementById("paymentDoneBtn");
-  const orderForm = document.getElementById("orderForm");
-
-  // 1. Show Order Form
-  openPopupBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      orderPopup.style.display = "block";
-    });
+// Open popup on Buy Now
+document.querySelectorAll(".openPopup").forEach(btn => {
+  btn.addEventListener("click", () => {
+    orderPopup.style.display = "block";
   });
+});
 
-  // 2. Close Order Form
-  closePopup.addEventListener("click", () => {
-    orderPopup.style.display = "none";
-  });
+// Close Popups
+document.getElementById("closePopup").addEventListener("click", () => {
+  orderPopup.style.display = "none";
+});
+document.getElementById("closePaymentPopup").addEventListener("click", () => {
+  paymentPopup.style.display = "none";
+});
+document.getElementById("closeThankYouPopup").addEventListener("click", () => {
+  thankYouPopup.style.display = "none";
+});
 
-  // 3. Submit Form → Send to WhatsApp + Show Payment Popup
-  orderForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+// On Form Submit
+orderForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    // Get form values
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
+  // Get values
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
 
-    // WhatsApp message
-    const message = `Hello, I want to place an order.\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Address:* ${address}`;
-    const whatsappURL = `https://wa.me/919953111782?text=${encodeURIComponent(message)}`;
+  // Store in session
+  sessionStorage.setItem("userData", JSON.stringify({ name, email, phone, address }));
 
-    // Open WhatsApp in new tab
-    window.open(whatsappURL, "_blank");
+  // Format WhatsApp Message
+  const message = `Hello, I want to place an order.%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Phone: ${phone}%0A
+Address: ${address}`;
 
-    // Close order popup and show payment popup
-    orderPopup.style.display = "none";
-    paymentPopup.style.display = "block";
-  });
+  // WhatsApp number
+  const whatsappNumber = "919953111782";
 
-  // 4. Close Payment Popup
-  closePaymentPopup.addEventListener("click", () => {
-    paymentPopup.style.display = "none";
-  });
+  // Open WhatsApp
+  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
 
-  // 5. Payment Done → Show Thank You
-  paymentDoneBtn.addEventListener("click", () => {
-    paymentPopup.style.display = "none";
-    thankYouPopup.style.display = "block";
-  });
+  // Show Payment Popup
+  orderPopup.style.display = "none";
+  paymentPopup.style.display = "block";
+});
 
-  // 6. Close Thank You
-  closeThankYouPopup.addEventListener("click", () => {
-    thankYouPopup.style.display = "none";
-  });
+// After Payment
+paymentDoneBtn.addEventListener("click", () => {
+  paymentPopup.style.display = "none";
+  thankYouPopup.style.display = "block";
+});
 
-  // Close popups if clicking outside
-  window.addEventListener("click", (e) => {
-    if (e.target === orderPopup) orderPopup.style.display = "none";
-    if (e.target === paymentPopup) paymentPopup.style.display = "none";
-    if (e.target === thankYouPopup) thankYouPopup.style.display = "none";
-  });
-};
+// Optional: Clicking outside popup closes it
+window.addEventListener("click", (e) => {
+  if (e.target === orderPopup) orderPopup.style.display = "none";
+  if (e.target === paymentPopup) paymentPopup.style.display = "none";
+  if (e.target === thankYouPopup) thankYouPopup.style.display = "none";
+});
