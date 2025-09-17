@@ -35,7 +35,7 @@ window.onload = function () {
 
     // WhatsApp message
     const message = `Hello, I want to place an order.\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Address:* ${address}`;
-    const whatsappURL = `https://wa.me/919953111782?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/918787270679?text=${encodeURIComponent(message)}`;
 
     // Open WhatsApp in new tab
     window.open(whatsappURL, "_blank");
