@@ -4,6 +4,7 @@ const orderPopup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
 const closePaymentPopup = document.getElementById("closePaymentPopup");
 const paymentDoneBtn = document.getElementById("paymentDoneBtn");
+const payNowBtn = document.getElementById("payNowBtn"); // Pay Now button
 
 // Open WhatsApp Popup first (order details)
 openPopupBtns.forEach(btn => {
@@ -17,8 +18,8 @@ closePopup.addEventListener("click", () => {
   orderPopup.style.display = "none";
 });
 
-// Open Payment Popup after clicking "✅ I've Done the Payment" button
-paymentDoneBtn.addEventListener("click", () => {
+// Open Payment Popup when "Pay Now" button is clicked
+payNowBtn.addEventListener("click", () => {
   orderPopup.style.display = "none";  // Hide the WhatsApp popup
   paymentPopup.style.display = "block";  // Show the Payment popup
 });
